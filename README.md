@@ -2,6 +2,8 @@
 
 A WEMOS/ESP8266 application for LED strip Christmas lights.
 
+Very easy to adapt to Arduino too, because the FastLED library also supports Arduino, as does PlatformIO.
+
 Uses the [FastLED](http://www.fastled.io) library, which supports a great deal of LED strips. This includes the WS2801, WS2811, WS2812B, LPD8806 and more.
 
 ## Effects
