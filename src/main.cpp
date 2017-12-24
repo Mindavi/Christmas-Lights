@@ -15,7 +15,6 @@ Ticker effectShower;
 void changeState();
 
 void setup() {
-  Serial.begin(9600);
   pinMode(2, OUTPUT);
   digitalWrite(2, LOW);
   FastLED.addLeds<WS2812B, 2, GRB>(leds, NUM_LEDS);
@@ -95,9 +94,6 @@ void changeState() {
   state = (state + 1) % (STATE_MAX + 1);
   effectShower.resume();
 
-  Serial.print("State: ");
-  Serial.println(state);
-
   switch (state) {
     case 0:
       effectShower.setCallback(makeRandomColor);
@@ -127,5 +123,4 @@ void changeState() {
 void loop() {
   stateChanger.update();
   effectShower.update();
-  Serial.println(effectShower.getRepeats());
 }
