@@ -13,6 +13,7 @@ Ticker stateChanger;
 Ticker effectShower;
 
 void changeState();
+void makeRandomColor();
 
 void setup() {
   pinMode(2, OUTPUT);
@@ -21,12 +22,22 @@ void setup() {
   stateChanger.setInterval(30 * 1000);
   stateChanger.setCallback(changeState);
   stateChanger.start();
+
+  // start first effect
+  effectShower.setCallback(makeRandomColor);
+  effectShower.setInterval(50);
+  effectShower.start();
 }
 
 CHSV randomColor() {
   CHSV hsv;
+  // totally random hue
   hsv.hue = random(255);
+
+  // random saturation, but not too low
   hsv.saturation = random(100, 255);
+
+  // full brightness
   hsv.value = 255;
   return hsv;
 }
@@ -45,7 +56,7 @@ void makeRandomColor() {
 // Create scrolling red and white candy cane stripes.
 // Try adjusting the width in pixels for various results.
 // Value "sets" should evenly divide into strand length
-void candyCane(int sets, int width) {
+void candyCane(uint16_t sets, uint16_t width) {
   int L;
   static uint16_t j = 0;
   j = (j + 1) % (sets * width);
